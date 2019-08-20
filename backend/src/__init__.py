@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_mongoengine import MongoEngine
-from .schemas import User
+from .updater import update_by_timeout
+
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
@@ -11,11 +12,13 @@ def create_app(test_config=None):
         },
     )
 
-    db = MongoEngine(app)
+    from .schemas import db, Post, Photo
+    db.init_app(app)
 
     @app.route('/hello')
     def hello():
         return 'Hello, World!'
-
-    User(name="rocksfd").save()
+    
+    update_by_timeout()
+    
     return app

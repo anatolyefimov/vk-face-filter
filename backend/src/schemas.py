@@ -1,4 +1,10 @@
-from mongoengine import *
+from flask_mongoengine import MongoEngine
 
-class User(Document):
-    name = StringField()
+db = MongoEngine()
+
+class Photo(db.EmbeddedDocument):
+    url = db.StringField()
+
+class Post(db.Document):
+    text = db.StringField()
+    photos = db. EmbeddedDocumentListField(Photo)
