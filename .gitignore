@@ -1,4 +1,8 @@
-#backend ignore
+#gitignore for backend
 
 /**/venv
 /**/__pycache__
+
+#gitignore for frontend
+/**/node_modules
+/**/dist
