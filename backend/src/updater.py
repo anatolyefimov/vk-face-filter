@@ -1,7 +1,5 @@
-
 from .fetcher import fetch_posts
 from .schemas import Post, Photo
-from flask import current_app
 import threading
 from functools import partial
 

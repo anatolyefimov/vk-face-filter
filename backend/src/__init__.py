@@ -1,7 +1,8 @@
 from flask import Flask
 from flask_mongoengine import MongoEngine
 from .updater import update_by_timeout
-
+from .schemas import Post
+from flask import jsonify
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
@@ -15,9 +16,10 @@ def create_app(test_config=None):
     from .schemas import db, Post, Photo
     db.init_app(app)
 
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
+    @app.route('/')
+    def give_post():
+        posts = [{ "text": post.text, "photos": post.photos} for post in Post.objects]
+        return jsonify(posts)
     
     update_by_timeout()
     
