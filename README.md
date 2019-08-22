@@ -1,8 +1,8 @@
-#VK filter
+# VK filter
 
 Список following находится в файле backend/following.json
 
-##backend
+## backend
 
 Предполгается что запущен экземпляр momgoDB на порте 27017. Для запуска сервера необходимо подтянуть зависимости и установить переменные окружения.
 
@@ -14,7 +14,7 @@ export FLASK_ENV=development
 flask run
 '''
 
-##frontend
+## frontend
 
 '''
 cd ../frontend
@@ -22,6 +22,6 @@ npm i
 npm start
 '''
 
-##Используемые библеотеки
+## Используемые библеотеки
 
 Для распознавания лиц использовал OpenCV. Mongoengine для интеграции DB. В качестве основного фреймворка для backend -- Flask.
