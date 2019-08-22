@@ -28,4 +28,8 @@ def create_app(test_config=None):
 
         return res
     
+    @app.route('/hello')
+    def  hello():
+        return "hello"
+    
     return app

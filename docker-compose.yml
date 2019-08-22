@@ -1,0 +1,15 @@
+version: '3'
+services:
+  mongo:
+    image: mongo:3.4
+    ports:
+      - "27017:27017"
+
+  vkfilterbackend:
+    build: ./backend
+    depends_on:
+      - "mongo"
+    ports:
+      - "5000:5000"
+    
+  
