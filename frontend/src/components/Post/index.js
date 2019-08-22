@@ -6,7 +6,7 @@ class Post extends React.Component {
         return ( 
             <div className="Post">
                 {this.props.text}
-                {this.props.photos.map((photo, index) => <img key={index} src={photo} />)}
+                {this.props.photos.map((photo, index) => <a href={photo}  key={index}> Фото {index + 1} </a>)}
             </div> 
         );
     };
