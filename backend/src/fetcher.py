@@ -16,7 +16,7 @@ def fetch_posts():
     
     for contact in following:
         params = contact
-        params["count"] = 10
+        params["count"] = 20
         params["access_token"] = "e9d5075ca98092d49302d8b252177d7293a8482dc3259172cc4cb0d25aa8d8514dd447cad5745cd1deab2",
         params["v"] = "5.101"
         res = requests.get('https://api.vk.com/method/wall.get', params=params).json()

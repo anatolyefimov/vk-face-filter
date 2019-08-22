@@ -1,17 +1,20 @@
 from .fetcher import fetch_posts
-from .schemas import Post, Photo
+from .schemas import Post
 import threading
 from functools import partial
 
-def update_by_timeout(timeout=30*60):
+def update_by_timeout():
+
     Post.drop_collection()
 
     posts = fetch_posts()
 
     for post in posts:
-        db_photos = [Photo(url=url) for url in post["photos"]]
-        Post(text=post["text"], photos=db_photos).save()
+        Post(text=post["text"], photos=post["photos"]).save()
+    print(threading.active_count())
     print('update_done  ')
-    threading.Timer(timeout, partial(update_by_timeout, timeout)).start()
+    threading.Timer(30*60, update_by_timeout).start()
+    threading.Event().set()
+    
 
-# update_by_timeout()
+

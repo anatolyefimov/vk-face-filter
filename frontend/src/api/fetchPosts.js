@@ -1,3 +1,8 @@
 async function fetchPosts() {
-    let res = fetch("http://localhost:5000")
+    let res = await fetch("http://localhost:5000");
+    res = await res.json()
+    
+    return res;
 }
+
+export default fetchPosts;
